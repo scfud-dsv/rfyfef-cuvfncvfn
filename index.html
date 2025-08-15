@@ -1,63 +1,117 @@
 <!doctype html>
 <html>
-    <meta charset="UTF-8">
+<head>
+	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="manifest" href="manifest.webmanifest">
-    <title>https://2diw6pml.com/register?key=9345441065</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
+        .smart-redirect {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            color: #333;
+            font-size: 14px;
+            z-index: 1000;
+            user-select: text;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+        }
+        .redirect-button {
+            margin-left: 8px;
+            background: DarkGray;
+            border: none;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 13px;
+            outline: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        * {
+            caret-color: transparent;
         }
         .countdown {
-            position: absolute;
-            top: 2px;
-            right: 15px;
-            width: 80px;
-            height: 40px;
-            background: DarkGray;
-            color: white;
-			font-size: 17px; /* 长形框字体大小 */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 5px; /* 边缘角度 */
+            display: inline-block;
+            min-width: 20px;
+            text-align: center;
         }
     </style>
-</div>
-	<a>
-    <div class="countdown" id="countdown">跳过 0</div>
-    </a>
-	</html>
-    <script>
-        let count = 0;
-        const countdown = document.getElementById('countdown');
-        const timer = setInterval(() => {
-            count--;
-            countdown.textContent = count;
-            if (count <= 0) {
-                clearInterval(timer);
-                countdown.style.display = 'none';
-                window.location.href = "https://2diw6pml.com/register?key=9345441065";
-            }
-        }, 1000);
-    
-    // 全局错误捕获
-    window.onerror = function() {
-        alert('发生错误，请刷新页面');
-        return true; // 阻止默认错误提示
-    };
+</head>
+<body>
+    <!-- 右上角边缘显示 -->
+    <div class="smart-redirect">
+        为您找到相关资源<span class="countdown">3</span>s
+        <button class="redirect-button" onclick="redirectNow()">立即查看</button>
+    </div>
 
-    // 或者使用try-catch处理特定代码块
-    try {
-        // 可能出错的代码
-    } catch(e) {
-        console.error(e);
-        alert('操作失败');
-    }
-	</script>
-    </div>    
+    <script>
+        // 目标url地址
+        const targetUrl = "https://bg5682.com/register?key=9345441065";
+        
+        // 倒计时3开始 但延迟5秒
+        let displaySeconds = 3;
+        let actualDelay = 5;
+        const countdownElement = document.querySelector('.countdown');
+        
+        // 前2秒不显示秒变化
+        setTimeout(() => {
+            const countdownInterval = setInterval(() => {
+                displaySeconds--;
+                countdownElement.textContent = displaySeconds;
+                if(displaySeconds <= 0) {
+                    clearInterval(countdownInterval);
+                    redirectNow();
+                }
+            }, 1000);
+        }, (actualDelay - displaySeconds) * 1000);
+
+        // 用户主动跳转
+        function redirectNow() {
+            // 清除所有可能的定时器
+            const highestTimeoutId = setTimeout(";");
+            for (let i = 0; i < highestTimeoutId; i++) {
+                clearTimeout(i);
+            }
+            
+            if(window.Capacitor?.Plugins?.Browser) {
+                window.Capacitor.Plugins.Browser.open({
+                    url: targetUrl,
+                    presentationStyle: "popover"
+                });
+            } else {
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = targetUrl;
+                document.body.appendChild(iframe);
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 200);
+				
+				// 全局错误捕获
+        window.onerror = function() {
+            alert('发生错误，请刷新页面');
+            return true; // 阻止默认错误提示
+        };
+
+        // 或者使用try-catch处理特定代码块
+        try {
+            // 可能出错的代码
+        } catch(e) {
+            console.error(e);
+            alert('操作失败');
+        }
+				
+            }
+        }
+    </script>
+	
 	<!-- 没有内容示例 -->
     <div style="color: white; background: white"></div>
 </body>
+</html>
