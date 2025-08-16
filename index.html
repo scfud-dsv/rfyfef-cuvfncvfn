@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-	<link rel="manifest" href="manifest.webmanifest">
+    <link rel="manifest" href="manifest.webmanifest">
     <style>
         .smart-redirect {
             position: fixed;
@@ -17,6 +17,8 @@
             -webkit-user-select: text;
             -moz-user-select: text;
             -ms-user-select: text;
+            text-decoration: underline dotted orange; /* 红色虚线 */
+            text-underline-offset: 4px; /* 调整虚线位置数值 */
         }
         .redirect-button {
             margin-left: 8px;
@@ -40,6 +42,8 @@
             display: inline-block;
             min-width: 20px;
             text-align: center;
+            text-decoration: underline dotted orange; /* 内容计时与虚线 */
+            text-underline-offset: 4px; /* 调整虚线位置数值 */
         }
     </style>
 </head>
@@ -93,25 +97,24 @@
                     window.location.href = targetUrl;
                 }, 200);
 				
-				// 全局错误捕获
-        window.onerror = function() {
-            alert('发生错误，请刷新页面');
-            return true; // 阻止默认错误提示
-        };
+                // 全局错误捕获
+                window.onerror = function() {
+                    alert('发生错误，请刷新页面');
+                    return true; // 阻止默认错误提示
+                };
 
-        // 或者使用try-catch处理特定代码块
-        try {
-            // 可能出错的代码
-        } catch(e) {
-            console.error(e);
-            alert('操作失败');
-        }
-				
+                // 或者使用try-catch处理特定代码块
+                try {
+                    // 可能出错的代码
+                } catch(e) {
+                    console.error(e);
+                    alert('操作失败');
+                }
             }
         }
     </script>
 	
-	<!-- 没有内容示例 -->
+    <!-- 没有内容示例 -->
     <div style="color: white; background: white"></div>
 </body>
 </html>
